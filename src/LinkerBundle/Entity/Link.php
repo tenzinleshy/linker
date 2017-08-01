@@ -3,6 +3,8 @@
 namespace LinkerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use LinkerBundle\Validator\Constraints as LinkerAssert;
 
 /**
  * Link
@@ -23,6 +25,8 @@ class Link
 
     /**
      * @var string
+     *
+     * @LinkerAssert\ContainsHttpStatusCode
      *
      * @ORM\Column(type="string", length=255)
      */
