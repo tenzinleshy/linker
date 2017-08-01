@@ -1,0 +1,3 @@
+linker_homepage:
+    path:     /
+    defaults: { _controller: LinkerBundle:Default:index }

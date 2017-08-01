@@ -1,0 +1,4 @@
+services:
+#    linker.example:
+#        class: LinkerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
