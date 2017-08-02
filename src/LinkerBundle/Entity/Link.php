@@ -6,11 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use LinkerBundle\Validator\Constraints as LinkerAssert;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * Link
  *
  * @ORM\Table(name="link")
  * @ORM\Entity(repositoryClass="LinkerBundle\Repository\LinkRepository")
+ * @UniqueEntity("shortUrlId")
  */
 class Link
 {
@@ -28,7 +31,7 @@ class Link
      *
      * @LinkerAssert\ContainsHttpStatusCode
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1024)
      */
     private $url;
 

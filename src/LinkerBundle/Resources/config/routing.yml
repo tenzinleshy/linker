@@ -1,3 +1,6 @@
+linker_redirect:
+    defaults: { _controller: LinkerBundle:Redirect:index }
+    path:     /{id}
 linker_link:
     resource: "@LinkerBundle/Resources/config/routing/link.yml"
     prefix:   /link

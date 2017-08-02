@@ -8,7 +8,6 @@ class ContainsHttpStatusCodeValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)
     {
-        $httpStatusCode = true;
 
         $handle = curl_init($value);
         curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);

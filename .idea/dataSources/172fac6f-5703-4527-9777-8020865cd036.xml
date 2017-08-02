@@ -25,7 +25,7 @@
     </column>
     <column id="15" parent="13" name="url">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(1024)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="16" parent="13" name="short_url_id">
