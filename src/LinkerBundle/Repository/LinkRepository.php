@@ -10,4 +10,17 @@ namespace LinkerBundle\Repository;
  */
 class LinkRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getOutdatedLinks(\DateTime $dateLimit)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('l')
+            ->from('LinkerBundle:Link', 'l')
+            ->where('l.createdAt < :dateLimit')
+            ->setParameter('dateLimit', $dateLimit)
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
 }

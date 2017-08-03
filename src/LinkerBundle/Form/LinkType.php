@@ -19,7 +19,11 @@ class LinkType extends AbstractType
     {
         $builder
             ->add('url', UrlType::class)
-            ->add('shortUrlId', TextType::class)
+            ->add('shortUrlId', null,[
+                'required'   => false,
+                'empty_data' => uniqid('id_'),
+                ]
+            )
         ;
     }
     

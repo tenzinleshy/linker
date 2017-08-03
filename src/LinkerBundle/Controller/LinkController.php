@@ -39,7 +39,7 @@ class LinkController extends Controller
 
         $form = $this->createForm('LinkerBundle\Form\LinkType', $link);
         $form->handleRequest($request);
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($link);
             $em->flush();
@@ -67,47 +67,25 @@ class LinkController extends Controller
         ));
     }
 
-//    /**
-//     * Displays a form to edit an existing post entity.
-//     *
-//     */
-//    public function editAction(Request $request, Post $post)
-//    {
-//        $deleteForm = $this->createDeleteForm($post);
-//        $editForm = $this->createForm('Leshy\BlogBundle\Form\PostType', $post);
-//        $editForm->handleRequest($request);
-//
-//        if ($editForm->isSubmitted() && $editForm->isValid()) {
-//            $this->getDoctrine()->getManager()->flush();
-//
-//            return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
-//        }
-//
-//        return $this->render('post/edit.html.twig', array(
-//            'post' => $post,
-//            'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
-//        ));
-//    }
-//
-//    /**
-//     * Deletes a post entity.
-//     *
-//     */
-//    public function deleteAction(Request $request, Post $post)
-//    {
-//        $form = $this->createDeleteForm($post);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->remove($post);
-//            $em->flush();
-//        }
-//
-//        return $this->redirectToRoute('post_index');
-//    }
-//
+    /**
+     * Deletes a post entity.
+     *
+     */
+    public function deleteAction(Request $request, Link $link)
+    {
+        $form = $this->createDeleteForm($link);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($link);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('link_new');
+    }
+
+
     /**
      * Creates a form to delete a link entity.
      *
