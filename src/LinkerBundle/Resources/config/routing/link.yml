@@ -13,6 +13,11 @@ link_new:
     defaults: { _controller: "LinkerBundle:Link:new" }
     methods:  [GET, POST]
 
+link_newpost:
+    path:     /newpost
+    defaults: { _controller: "LinkerBundle:Link:newpost" }
+    methods:  [GET,POST]
+
 #link_edit:
 #    path:     /{id}/edit
 #    defaults: { _controller: "v:Links:edit" }

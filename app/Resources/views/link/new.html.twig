@@ -1,15 +1,27 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<div class="jumbotron text-center">
     <h1>Link creation</h1>
-
+    <p>Here you can shorten and share any link very simply</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-15">
     {{ form_start(form) }}
+
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+
+        <input type="submit" value="Create" class="btn btn-primary"/>
+
     {{ form_end(form) }}
+
 
     {#<ul>#}
         {#<li>#}
             {#<a href="{{ path('link_new') }}">Back to the list</a>#}
         {#</li>#}
     {#</ul>#}
+        </div>
+    </div>
+</div>
 {% endblock %}

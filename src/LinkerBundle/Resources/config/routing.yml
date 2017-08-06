@@ -6,4 +6,4 @@ linker_link:
     prefix:   /link
 linker_homepage:
     path:     /
-    defaults: { _controller: LinkerBundle:Default:index }
+    defaults: { _controller: LinkerBundle:Link:new }

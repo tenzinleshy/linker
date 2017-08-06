@@ -13,6 +13,9 @@ class RedirectController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $link = $em->getRepository('LinkerBundle:Link')->findOneBy(['shortUrlId'=>$id]);
+        if(empty($link)){
+            return $this->redirectToRoute('link_new');
+        }
         $usesCount = $link->getUsesCount();
         $link->setUsesCount(++$usesCount);
         $em->persist($link);
