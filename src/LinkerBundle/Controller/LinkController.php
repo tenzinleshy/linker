@@ -18,7 +18,7 @@ class LinkController extends Controller
      *
      */
     public function indexAction()
-    {//die('ddd');
+    {
         $em = $this->getDoctrine()->getManager();
 
         $links = $em->getRepository('LinkerBundle:Link')->findAll();
@@ -58,21 +58,32 @@ class LinkController extends Controller
      * Creates a new link entity.
      *
      */
-    public function newAPIAction(Request $request)
+    public function newpostAction(Request $request)
     {
+        $content = $request->getContent();
+        $data = json_decode($content, true);
+
         $link = new Link();
         $link->setUsesCount(0);
         $link->setCreatedAt(new \DateTime(date("Y-m-d H:i:s")));
 
-        $form = $this->createForm('LinkerBundle\Form\LinkType', $link);
-        $form->handleRequest($request);
+        $form = $this->createForm(
+            'LinkerBundle\Form\LinkType',
+            $link,
+            [
+                'csrf_protection' => false,
+                'allow_extra_fields' => true
+            ]
+        );
 
+        $form->submit($data);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($link);
             $em->flush();
-            $array = array( 'status' => 201, 'msg' => 'Link Created', 'short_link' => $link->getShortUrlId());
+            $shorUrlPrefix = $request->getSchemeAndHttpHost().'/';
+            $array = array( 'status' => 201, 'msg' => 'Link Created', 'short_link' => $shorUrlPrefix.$link->getShortUrlId());
         }else{
             $errors = array();
             foreach ($form->getErrors() as $error) {

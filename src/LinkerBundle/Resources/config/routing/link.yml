@@ -16,7 +16,7 @@ link_new:
 link_newpost:
     path:     /newpost
     defaults: { _controller: "LinkerBundle:Link:newpost" }
-    methods:  [GET,POST]
+    methods:  [POST]
 
 #link_edit:
 #    path:     /{id}/edit
